@@ -59,8 +59,9 @@
 
 <script>
 let count;
-import { marked } from "marked";
 import { doc, setDoc, collection, getFirestore } from "firebase/firestore";
+import { marked } from "marked";
+marked.setOptions({ breaks: true });
 
 export default {
   head() {

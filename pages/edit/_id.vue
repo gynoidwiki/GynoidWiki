@@ -51,6 +51,7 @@
 <style></style>
 
 <script>
+let count;
 import {
   setDoc,
   getFirestore,
@@ -59,7 +60,7 @@ import {
   doc,
 } from "firebase/firestore";
 import { marked } from "marked";
-let count;
+marked.setOptions({ breaks: true });
 
 export default {
   head() {
