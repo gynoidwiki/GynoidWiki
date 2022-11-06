@@ -5,7 +5,7 @@ const url = process.env.NUXT_ENV_SITE_MAP;
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: "%s - ガイノイドWiki",
+    titleTemplate: "%s | ガイノイドWiki",
     title: "ガイノイドWiki",
     htmlAttrs: {
       lang: "en",
@@ -44,6 +44,10 @@ export default {
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
 
+  generate: {
+    fallback: true,
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ["~assets/css/style.css"],
 
@@ -58,25 +62,12 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    "bootstrap-vue/nuxt",
-    "@nuxtjs/sitemap",
+    // https://go.nuxtjs.dev/buefy
+    "nuxt-buefy",
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
+    "@nuxtjs/sitemap",
   ],
-
-  bootstrapVue: {
-    bootstrapVueCSS: false,
-    componentPlugins: [
-      "LayoutPlugin",
-      "NavbarPlugin",
-      "FormInputPlugin",
-      "FormTextareaPlugin",
-      "FormFilePlugin",
-      "BreadcrumbPlugin",
-      "TabsPlugin",
-      "ButtonPlugin",
-    ],
-  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -85,9 +76,7 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  generate: {
-    fallback: true,
-  },
+  build: {},
 
   sitemap: {
     path: "/sitemap.xml",

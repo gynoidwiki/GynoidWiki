@@ -1,20 +1,35 @@
 <template>
   <div>
     <div>
-      <b-form-file
-        v-model="file"
-        placeholder="画像ファイルを指定してください"
-      ></b-form-file>
+      <b-field>
+        <b-upload v-model="file" multiple drag-drop expanded>
+          <section class="section">
+            <div class="content has-text-centered">
+              <p>
+                <b-icon icon="upload" size="is-large"></b-icon>
+              </p>
+              <p>画像ファイルをアップロードできます。</p>
+            </div>
+          </section>
+        </b-upload>
+      </b-field>
     </div>
 
     <div class="mt-20">
-      <b-button block variant="primary" @click="post">アップロード</b-button>
+      <b-button type="is-primary" expanded　@click="post"
+        >アップロード</b-button
+      >
     </div>
 
-    <div class="mt-20 frame">
+    <div class="content mt-20 frame">
       <h2>画像について</h2>
       <ul>
         <li>画像をクリックすると、URLをコピーできます。</li>
+        <li>
+          アップロード前に<nuxt-link to="/policy"
+            >プライバシーポリシー</nuxt-link
+          >を閲覧してください。
+        </li>
       </ul>
     </div>
 

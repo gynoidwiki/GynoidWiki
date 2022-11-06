@@ -1,4 +1,4 @@
-# GynoidWiki
+# Gynoid_Wiki
 
 ## Build Setup
 

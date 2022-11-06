@@ -15,3 +15,13 @@
     >
   </div>
 </template>
+
+<script>
+export default {
+  head() {
+    return {
+      title: "お問い合わせ",
+    };
+  },
+};
+</script>

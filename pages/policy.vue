@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content">
     <h1 class="mb-50">プライバシーポリシー</h1>
 
     <h2 class="mb-20">このWikiについて</h2>

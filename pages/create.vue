@@ -1,61 +1,68 @@
 <template>
   <div>
+    <b-breadcrumb>
+      <b-breadcrumb-item tag="nuxt-link" to="/">ホーム</b-breadcrumb-item>
+      <b-breadcrumb-item tag="nuxt-link" to="/create" active
+        >新規ページ作成</b-breadcrumb-item
+      >
+    </b-breadcrumb>
+
     <h1>新規ページ作成</h1>
+
     <p class="mb-50">
       記事の作成前に「<nuxt-link to="/siteinfo">このサイトについて</nuxt-link
       >」や「<nuxt-link to="policy">プライバシーポリシー</nuxt-link
       >」を読んでください。
     </p>
 
-    <div class="mb-10">
-      <label for="title">タイトル</label>
-      <b-form-input
-        input-id="title"
-        v-model="title"
-        placeholder="タイトルは30文字までです"
-      ></b-form-input>
-    </div>
+    <b-field label="タイトル">
+      <b-input v-model="title" maxlength="30"></b-input>
+    </b-field>
 
-    <div class="mb-10">
-      <label>内容</label>
-      <div>
-        <b-tabs content-class="mt-3">
-          <b-tab title="マークダウン" active>
-            <b-form-textarea
-              v-model="body"
-              placeholder="マークダウン方式で書いてください"
-              :rows="rows"
-            ></b-form-textarea>
-          </b-tab>
-          <b-tab title="プレビュー"
-            ><div class="frame" v-html="preview"></div
-          ></b-tab>
-          <b-tab title="記法について">
+    <b-field label="内容">
+      <b-tabs v-model="activeTab">
+        <b-tab-item label="マークダウン">
+          <b-input type="textarea" v-model="body" :rows="rows"></b-input>
+        </b-tab-item>
+
+        <b-tab-item label="プレビュー">
+          <div v-html="preview" class="content page"></div>
+        </b-tab-item>
+
+        <b-tab-item label="記事の記法">
+          <div class="content">
             <p>記事の作成は<b>マークダウン</b>を用いて行います。</p>
             <p>見出しは「##」を使ってください。「#」では表示されません。</p>
-          </b-tab>
-        </b-tabs>
-      </div>
-    </div>
-    <div>
-      <b-button block variant="primary" v-bind:disabled="check" @click="post"
+          </div>
+        </b-tab-item>
+      </b-tabs>
+    </b-field>
+
+    <div class="buttons">
+      <b-button type="is-primary" expanded v-bind:disabled="check" @click="post"
         >投稿</b-button
       >
     </div>
   </div>
 </template>
 
+<style>
+.errors {
+  margin: 10px 0;
+}
+</style>
+
 <script>
+let count;
 import { doc, setDoc, collection, getFirestore } from "firebase/firestore";
 import { marked } from "marked";
-let count;
+marked.setOptions({ breaks: true });
 
 export default {
   head() {
     return {
       title: "新規ページ作成",
       meta: [{ hid: "robots", name: "robots", content: "noindex" }],
-      script: [{ src: "https://cdn.jsdelivr.net/npm/marked/marked.min.js" }],
     };
   },
   data() {
@@ -63,18 +70,12 @@ export default {
       title: "",
       tags: [],
       body: "",
-      error: null,
+      activeTab: 0,
     };
   },
   computed: {
     check: function () {
-      if (
-        !this.title ||
-        this.title.length > 30 ||
-        this.tags.length < 1 ||
-        this.tags.length > 20 ||
-        !this.body
-      ) {
+      if (!this.title || this.title.length > 30 || !this.body) {
         return true;
       } else {
         return false;
@@ -90,7 +91,7 @@ export default {
       }
     },
     preview: function () {
-      return marked.parse(this.body);
+      return marked(this.body);
     },
   },
   methods: {
@@ -105,7 +106,6 @@ export default {
       const page = await setDoc(doc(db, "article", page_id), {
         id: page_id,
         title: this.title,
-        tags: this.tags,
         body: this.body,
         created_at: now,
         updated_at: now,
@@ -115,7 +115,6 @@ export default {
         id: backup_id,
         page_id: page_id,
         title: this.title,
-        tags: this.tags,
         body: this.body,
         date: now,
       });
@@ -125,9 +124,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.mb-10 {
-  margin-bottom: 10px;
-}
-</style>

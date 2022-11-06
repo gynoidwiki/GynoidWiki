@@ -1,51 +1,54 @@
 <template>
   <div>
-    <div class="header">
-      <b-navbar toggleable="lg" type="dark" variant="info">
-        <b-navbar-brand to="/">ガイノイドWiki</b-navbar-brand>
+    <div class="container">
+      <Header></Header>
 
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-        <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav>
-            <b-nav-item-dropdown text="ページ" right>
-              <b-dropdown-item to="/create">作成</b-dropdown-item>
-              <b-dropdown-item
-                href="#"
-                v-if="$route.params.id"
-                :to="'/edit/' + $route.params.id"
-                >編集</b-dropdown-item
-              >
-            </b-nav-item-dropdown>
-            <b-nav-item to="/image">画像</b-nav-item>
-          </b-navbar-nav>
-        </b-collapse>
-      </b-navbar>
+      <div class="columns is-desktop r-desktop">
+        <div class="column is-8-desktop is-full">
+          <div class="p-10">
+            <Nuxt></Nuxt>
+          </div>
+        </div>
+        <div class="column is-4-desktop is-full">
+          <div class="p-10">
+            <Side></Side>
+          </div>
+        </div>
+      </div>
     </div>
-    <b-container class="bv-example-row mt-10">
-      <b-row>
-        <b-col lg="8"><Nuxt /></b-col>
-        <b-col lg="4"><Side /></b-col>
-      </b-row>
-    </b-container>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>©2022 ガイノイドWiki</p>
+      </div>
+    </footer>
   </div>
 </template>
 
 <style></style>
 
 <script>
-import { getAuth, onAuthStateChanged, signInAnonymously } from "firebase/auth";
+import Header from "@/components/Header.vue";
 import Side from "@/components/Side.vue";
+import { getAuth, onAuthStateChanged, signInAnonymously } from "firebase/auth";
 
 export default {
   middleware: "maintenance",
   data() {
     return {
-      keyword: "",
+      data: [],
+      password: "",
     };
   },
   components: {
+    Header,
     Side,
+  },
+  watch: {
+    $route() {
+      window.scrollTo({
+        top: 0,
+      });
+    },
   },
   mounted() {
     const auth = getAuth();
@@ -63,9 +66,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.mt-10 {
-  margin-top: 10px;
-}
-</style>

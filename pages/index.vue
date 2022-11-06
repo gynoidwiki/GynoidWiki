@@ -1,26 +1,17 @@
 <template>
-  <div>
-    <div class="frame">
-      <h1>ガイノイドWikiへようこそ!</h1>
+  <div class="content">
+    <h1>ガイノイドWikiへようこそ!</h1>
 
-      <h2>ガイノイドWikiとは?</h2>
-      <p>
-        女性型ロボット・アンドロイドである「ガイノイド」をまとめたサイトです。
-      </p>
-
-      <h2>記事にしていい内容</h2>
-      <ul>
-        <li>ガイノイドが中心のアニメ・特撮・映画等</li>
-        <li>ガイノイドの記事</li>
-        <li>ガイノイドに関わるSS</li>
-      </ul>
-    </div>
+    <h2>ガイノイドWikiとは?</h2>
+    <p>
+      このサイトは、女性型ロボット・アンドロイドを意味する「ガイノイド」についてまとめていくWikiです。
+    </p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Index",
+  name: "IndexPage",
   head() {
     return {
       titleTemplate: null,
