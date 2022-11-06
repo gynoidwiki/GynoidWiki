@@ -66,6 +66,7 @@ export default {
     "nuxt-buefy",
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
+    "@nuxtjs/sitemap",
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
