@@ -17,7 +17,7 @@
           tag="a"
           :href="
             'https://twitter.com/intent/tweet?ref_src=twsrc%5Etfw&url=' +
-            encodeURI('https://www.gynoid.com' + $route.path) +
+            encodeURI('https://www.gynoidwiki.com' + $route.path) +
             '&text=' +
             encodeURI(title.stringValue + ' | ガイノイドWiki')
           "
