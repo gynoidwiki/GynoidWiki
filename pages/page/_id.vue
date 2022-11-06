@@ -1,11 +1,9 @@
 <template>
   <div>
     <b-breadcrumb>
-      <b-breadcrumb-item tag="router-link" to="/">ホーム</b-breadcrumb-item>
-      <b-breadcrumb-item tag="router-link" to="/list/create"
-        >記事</b-breadcrumb-item
-      >
-      <b-breadcrumb-item tag="router-link" to="/" active>{{
+      <b-breadcrumb-item to="/">ホーム</b-breadcrumb-item>
+      <b-breadcrumb-item to="/list/create">記事</b-breadcrumb-item>
+      <b-breadcrumb-item to="/" active>{{
         title.stringValue
       }}</b-breadcrumb-item>
     </b-breadcrumb>
@@ -17,9 +15,9 @@
           tag="a"
           :href="
             'https://twitter.com/intent/tweet?ref_src=twsrc%5Etfw&url=' +
-            encodeURI('https://www.gynoidwiki.com' + $route.path) +
+            encodeURI('https://www.localcmwiki.com' + $route.path) +
             '&text=' +
-            encodeURI(title.stringValue + ' | ガイノイドWiki')
+            encodeURI(title.stringValue + ' | ローカルCMwiki')
           "
           size="is-small"
           icon-left="twitter"
@@ -29,7 +27,7 @@
         >
       </div>
 
-      <div class="mt-50 page" v-html="change(body.stringValue)"></div>
+      <div class="mt-50 frame" v-html="change(body.stringValue)"></div>
 
       <div class="mt-50">
         <ul>
@@ -58,7 +56,6 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 
-marked.setOptions({ breaks: true });
 dayjs.extend(utc);
 dayjs.extend(timezone);
 

@@ -10,38 +10,45 @@
       >
     </b-breadcrumb>
 
-    <h1>ページの編集</h1>
+    <h1>ページ編集</h1>
     <p class="mb-50">
       記事の作成前に「<nuxt-link to="/siteinfo">このサイトについて</nuxt-link
       >」や「<nuxt-link to="policy">プライバシーポリシー</nuxt-link
       >」を読んでください。
     </p>
 
-    <b-field label="タイトル">
-      <b-input v-model="title"></b-input>
-    </b-field>
+    <div class="mb-10">
+      <label for="title">タイトル</label>
+      <b-form-input
+        input-id="title"
+        v-model="title"
+        placeholder="タイトルは30文字までです"
+      ></b-form-input>
+    </div>
 
-    <b-field label="内容">
-      <b-tabs v-model="activeTab">
-        <b-tab-item label="マークダウン">
-          <b-input type="textarea" v-model="body" :rows="rows"></b-input>
-        </b-tab-item>
-
-        <b-tab-item label="プレビュー">
-          <div v-html="preview" class="content page"></div>
-        </b-tab-item>
-
-        <b-tab-item label="記事の記法">
-          <div class="content">
+    <div class="mb-10">
+      <label>内容</label>
+      <div>
+        <b-tabs content-class="mt-3">
+          <b-tab title="マークダウン" active>
+            <b-form-textarea
+              v-model="body"
+              placeholder="マークダウン方式で書いてください"
+              :rows="rows"
+            ></b-form-textarea>
+          </b-tab>
+          <b-tab title="プレビュー"
+            ><div class="frame" v-html="preview"></div
+          ></b-tab>
+          <b-tab title="記法について">
             <p>記事の作成は<b>マークダウン</b>を用いて行います。</p>
             <p>見出しは「##」を使ってください。「#」では表示されません。</p>
-          </div>
-        </b-tab-item>
-      </b-tabs>
-    </b-field>
-
-    <div class="buttons">
-      <b-button type="is-primary" expanded v-bind:disabled="check" @click="post"
+          </b-tab>
+        </b-tabs>
+      </div>
+    </div>
+    <div>
+      <b-button block variant="primary" v-bind:disabled="check" @click="post"
         >投稿</b-button
       >
     </div>
@@ -51,7 +58,6 @@
 <style></style>
 
 <script>
-let count;
 import {
   setDoc,
   getFirestore,
@@ -60,7 +66,7 @@ import {
   doc,
 } from "firebase/firestore";
 import { marked } from "marked";
-marked.setOptions({ breaks: true });
+let count;
 
 export default {
   head() {
@@ -74,7 +80,7 @@ export default {
     return {
       title: "",
       body: "",
-      activeTab: 0,
+      error: null,
     };
   },
   async asyncData({ route, $axios }) {
@@ -119,7 +125,7 @@ export default {
       }
     },
     preview: function () {
-      return marked(this.body);
+      return marked.parse(this.body);
     },
   },
   methods: {

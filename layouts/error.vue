@@ -1,5 +1,5 @@
 <template>
-  <div class="frame">
+  <div>
     <h1>エラーが発生しました</h1>
 
     <NuxtLink to="/">ホームに戻る</NuxtLink>

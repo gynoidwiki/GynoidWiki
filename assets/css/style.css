@@ -1,29 +1,30 @@
-.mb-20 {
-  margin-bottom: 20px !important;
+.frame h1 {
+  display: none;
+}
+
+.frame img {
+  border: 1px solid black;
 }
 
 .mt-20 {
-  margin-top: 20px !important;
+  margin-top: 20px;
 }
 
 .mt-50 {
   margin-top: 50px !important;
 }
 
+.mb-20 {
+  margin-bottom: 20px !important;
+}
+
 .mb-50 {
   margin-bottom: 50px !important;
 }
 
-.red {
-  color: red !important;
-}
-
-.font24 {
-  font-size: 24px;
-}
-
-.page h1 {
-  display: none;
+.gallery img {
+  max-width: 100%;
+  margin: 5px;
 }
 
 h1 {
