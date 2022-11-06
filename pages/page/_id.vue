@@ -58,6 +58,7 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 
+marked.setOptions({ breaks: true });
 dayjs.extend(utc);
 dayjs.extend(timezone);
 

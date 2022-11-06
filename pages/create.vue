@@ -22,12 +22,7 @@
     <b-field label="内容">
       <b-tabs v-model="activeTab">
         <b-tab-item label="マークダウン">
-          <b-input
-            maxlength="200"
-            type="textarea"
-            v-model="body"
-            :rows="rows"
-          ></b-input>
+          <b-input type="textarea" v-model="body" :rows="rows"></b-input>
         </b-tab-item>
 
         <b-tab-item label="プレビュー">
