@@ -103,7 +103,7 @@ export default {
   },
   computed: {
     check: function () {
-      if (!this.title || this.title.length > 30 || !this.body) {
+      if (!this.title || this.title.length > 100 || !this.body) {
         return true;
       } else {
         return false;
