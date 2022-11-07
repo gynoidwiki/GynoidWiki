@@ -16,7 +16,7 @@
     </p>
 
     <b-field label="タイトル">
-      <b-input v-model="title" maxlength="30"></b-input>
+      <b-input v-model="title" maxlength="100"></b-input>
     </b-field>
 
     <b-field label="内容">
