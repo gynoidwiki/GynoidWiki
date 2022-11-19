@@ -117,7 +117,7 @@ export default {
     const id = route.params.id;
 
     const url =
-      "https://firestore.googleapis.com/v1/projects/gynoidwiki-16419/databases/(default)/documents/article/" +
+      "https://firestore.googleapis.com/v1/projects/gynoidwiki-d189f/databases/(default)/documents/article/" +
       route.params.id;
 
     try {

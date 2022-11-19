@@ -83,7 +83,7 @@ export default {
 
     if (route.query.backup) {
       const url =
-        "https://firestore.googleapis.com/v1/projects/gynoidwiki-16419/databases/(default)/documents/article/" +
+        "https://firestore.googleapis.com/v1/projects/gynoidwiki-d189f/databases/(default)/documents/article/" +
         route.query.backup;
       const res = await $axios.$get(url);
       return {
@@ -92,7 +92,7 @@ export default {
       };
     } else {
       const url =
-        "https://firestore.googleapis.com/v1/projects/gynoidwiki-16419/databases/(default)/documents/article/" +
+        "https://firestore.googleapis.com/v1/projects/gynoidwiki-d189f/databases/(default)/documents/article/" +
         route.params.id;
       const res = await $axios.$get(url);
       return {

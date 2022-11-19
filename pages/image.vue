@@ -36,7 +36,7 @@
     <div class="mt-20 gallery">
       <img
         :src="
-          'https://firebasestorage.googleapis.com/v0/b/gynoidwiki-16419.appspot.com/o/image%2F' +
+          'https://firebasestorage.googleapis.com/v0/b/gynoidwiki-d189f.appspot.com/o/image%2F' +
           list.id +
           '?alt=media'
         "
@@ -46,7 +46,7 @@
         loading="lazy"
         @click="
           paste(
-            'https://firebasestorage.googleapis.com/v0/b/gynoidwiki-16419.appspot.com/o/image%2F' +
+            'https://firebasestorage.googleapis.com/v0/b/gynoidwiki-d189f.appspot.com/o/image%2F' +
               list.id +
               '?alt=media'
           )
